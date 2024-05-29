@@ -19,16 +19,16 @@ name: develop
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "sonal-geode" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "sonal-geode" ]
 
 permissions:
   contents: read
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     env:
       GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GE_ACCESS_TOKEN }}
     steps:
@@ -37,7 +37,8 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '8'
-        distribution: 'liberica'
+        distribution: 'adopt'
+        architecture : s390x
     - name: Run 'build install javadoc spotlessCheck rat checkPom resolveDependencies pmdMain' with Gradle
       uses: gradle/gradle-build-action@v2
       with:
@@ -48,8 +49,8 @@ jobs:
      strategy:
        fail-fast: false
        matrix:
-         os: [ubuntu-latest]
-         distribution: [ 'liberica' ]
+         os: [self-hosted]
+         distribution: [ 'adopt' ]
          java: ['11']
      runs-on: ${{ matrix.os }}
      env:
@@ -91,8 +92,8 @@ jobs:
    strategy:
      fail-fast: false
      matrix:
-       os: [ubuntu-latest]
-       distribution: ['liberica']
+       os: [self-hosted]
+       distribution: ['adopt']
        java: ['8', '11', '17']
    runs-on: ${{ matrix.os }}
    env:
@@ -150,8 +151,8 @@ jobs:
      needs: [apiCheck, unitTest]
      strategy:
        matrix:
-         os: [ubuntu-latest]
-         distribution: ['liberica']
+         os: [self-hosted]
+         distribution: ['adopt']
          java: ['8']
      runs-on: ${{ matrix.os }}
      env:
@@ -199,8 +200,8 @@ jobs:
     needs: [apiCheck, unitTest]
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        distribution: ['liberica']
+        os: [self-hosted]
+        distribution: ['adopt']
         java: ['8']
     runs-on: ${{ matrix.os }}
     env:
@@ -241,8 +242,8 @@ jobs:
     needs: [apiCheck, unitTest]
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        distribution: ['liberica']
+        os: [self-hosted]
+        distribution: ['adopt']
         java: ['8']
     runs-on: ${{ matrix.os }}
     env:
@@ -285,8 +286,8 @@ jobs:
     needs: [apiCheck, unitTest]
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        distribution: ['liberica']
+        os: [self-hosted]
+        distribution: ['adopt']
         java: ['8']
     runs-on: ${{ matrix.os }}
     env:
@@ -329,8 +330,8 @@ jobs:
     needs: [apiCheck, unitTest]
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        distribution: ['liberica']
+        os: [self-hosted]
+        distribution: ['adopt']
         java: ['8']
     runs-on: ${{ matrix.os }}
     env:
@@ -373,8 +374,8 @@ jobs:
     needs: [apiCheck, unitTest]
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        distribution: ['liberica']
+        os: [self-hosted]
+        distribution: ['adopt']
         java: ['8']
     runs-on: ${{ matrix.os }}
     env:
