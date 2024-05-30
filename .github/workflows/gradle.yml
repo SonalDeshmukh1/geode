@@ -419,8 +419,8 @@ jobs:
     needs: [ apiCheck, unitTest ]
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
-        distribution: [ 'liberica' ]
+        os: [ self-hosted ]
+        distribution: [ 'adopt' ]
         java: [ '8' ]
     runs-on: ${{ matrix.os }}
     env:
