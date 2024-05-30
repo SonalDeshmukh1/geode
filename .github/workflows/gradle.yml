@@ -450,7 +450,7 @@ jobs:
             -PcompileJVMVer=${JAVA_BUILD_VERSION} \
             -PtestJVM=${JAVA_TEST_PATH} \
             -PtestJVMVer=${JAVA_TEST_VERSION} \
-            -PtestJava8Home=${JAVA_HOME_11_X64} \
+            -PtestJava11Home=${JAVA_HOME_11_X64} \
             geode-assembly:distributedTest \
             geode-dunit:distributedTest \
             geode-connectors:distributedTest \
